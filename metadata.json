@@ -1,0 +1,8 @@
+{
+  "name": "Remix TelecomOps 360 - V6",
+  "description": "Enterprise Telecom Network Operations, BSC/NOC Alarm Management, Tower Maintenance, Field Engineering, and Site Inspection Platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

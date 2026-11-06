@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-arabic: 'IBM Plex Sans Arabic', 'Cairo', 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* RTL Arabic Typography & Layout mirroring */
+  [dir="rtl"] {
+    font-family: var(--font-arabic);
+  }
+
+  /* Technical identifiers, codes, coordinates, numbers strictly stay LTR in Arabic */
+  [dir="rtl"] code,
+  [dir="rtl"] pre,
+  [dir="rtl"] .font-mono,
+  [dir="rtl"] .tabular-nums,
+  [dir="rtl"] .tech-code,
+  [dir="rtl"] .tech-id,
+  [dir="rtl"] .ltr-protect,
+  [dir="rtl"] input[type="number"],
+  [dir="rtl"] input[type="tel"],
+  [dir="rtl"] .maplibregl-ctrl,
+  [dir="rtl"] .maplibregl-popup-content {
+    direction: ltr !important;
+    unicode-bidi: isolate;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Support mobile notch and safe areas */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0.5rem);
+  }
+
+  /* Touch accessibility target minimum */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Scrollbars for light and dark modes */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* RTL layout helpers */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Pulsating Pin for Real-World Searched Places */
+@keyframes pulse-pin {
+  0% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(14, 165, 233, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+}
+.searched-place-pin-marker {
+  animation: pulse-pin 2s infinite;
+  border-radius: 9999px;
+}
